@@ -1,14 +1,14 @@
-#pragma once // Sadece bir kere dahil edilmesini sağlar
+#pragma once
 
 #include <iostream>
 #include <stdexcept>
 
-// Sadece char tutan Node yapısı
+
 struct Node
 {
     char val;
     Node *next;
-    // Yapıcı (constructor) inline olarak burada tanımlı
+   
     Node(char c) : val(c), next(nullptr) {}
 };
 
@@ -18,11 +18,11 @@ private:
     Node *top;
 
 public:
-    // Yapıcı
+   
     Stack() : top(nullptr) {}
 
-    // Metot Tanımları ve Kodları
-    bool isEmpty() const { // const eklemek daha güvenlidir
+ 
+    bool isEmpty() const { 
         return top == nullptr;
     }
 
@@ -33,13 +33,12 @@ public:
         top = newnode;
     }
 
-    // pop işlemi artık döndürülecek bir değer olmadığı için void olabilir
+   
     void pop()
     {
         if (isEmpty())
         {
-            // cerr kullanmak yerine exception fırlatmak daha C++ usulü ve güvenlidir.
-            // throw std::runtime_error("Stack is empty!"); 
+           
             std::cerr << "Yığın boş!" << std::endl;
             return;
         }
@@ -52,14 +51,14 @@ public:
     {
         if (isEmpty())
         {
-            // throw std::runtime_error("Stack is empty!"); 
+            
             std::cerr << "Yığın boş!" << std::endl;
             return '\0'; 
         }
         return top->val;
     }
 
-    // Yıkıcı (Destructor)
+
     ~Stack()
     {
         while (!isEmpty())
